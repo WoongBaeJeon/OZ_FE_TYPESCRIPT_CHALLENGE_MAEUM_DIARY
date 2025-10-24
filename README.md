@@ -1,69 +1,19 @@
-# React + TypeScript + Vite
+### 기본 요구 사항
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **타입 정의 파일 작성 (`types/index.ts`)**
+   - 감정의 종류를 표현하는 `EmotionType` 유니온 타입을 정의합니다.
+   - 하나의 감정 기록을 나타내는 `Emotion` 인터페이스를 정의합니다.
+   - 타입 정의만을 위한 `import type` 구문을 사용해보세요.
+2. **감정 입력 폼 구현 (`EmotionForm.tsx`)**
+   - 감정 선택(`radio`)과 일기 작성(`textarea`) 기능을 구현합니다.
+   - `Emotion` 객체를 생성하여 상위 컴포넌트로 전달합니다.
+   - Props 타입을 명확하게 지정하고, 제출 시 입력 초기화도 처리합니다.
+3. **감정 리스트 구현 (`EmotionList.tsx`)**
+   - 전체 감정 혹은 특정 감정만 필터링해서 보여줄 수 있도록 구현합니다.
+   - 조건부 렌더링을 사용해 리스트가 비었을 때 문구를 보여줍니다.
+   - Props로 전달된 리스트와 필터 상태를 기반으로 동작하도록 타입을 지정합니다.
+4. **작동 확인**
+   - 감정 선택, 일기 작성, 기록 추가, 필터 기능이 정상적으로 작동하는지 브라우저에서 테스트하세요.
+   - 선택적으로 CSS 스타일을 수정해 나만의 감정 일기 앱으로 꾸며보세요.
