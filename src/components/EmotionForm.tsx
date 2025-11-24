@@ -21,6 +21,15 @@ export default function EmotionForm({ onAdd }: Props) {
     //    note: ...,
     //    date: ...,
     // };
+    const newEmotion: Emotion = {
+      id: Date.now().toString(),
+      emotion: selected,
+      note: note,
+      date: new Date().toISOString().split("T")[0], // YYYY-MM-DD 형식
+    };
+
+    onAdd(newEmotion);
+    setNote("");
 
     // 일기를 기록하고, 입력을 초기화하세요.
     // HINT: onAdd, setNote
